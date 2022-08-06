@@ -1,0 +1,21 @@
+.card-product {
+  width: 100%;
+  .card-product__img {
+    width: 100%;
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  .card-description {
+    background-color: rgb(248, 248, 248);
+    .card-description__title {
+      font-size: 1.8em;
+      font-family: "Amatic SC", cursive;
+    }
+    .card-description__price {
+      width: 100%;
+      text-align: right;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+.jumbotron {
+  width: 100%;
+  padding: 1em .5em;
+  .jumbotron__img {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .jumbotron__title {
+    font-family: 'Lobster Two';
+    text-align: center;
+    font-size: 1.7em;
+  }
+}
