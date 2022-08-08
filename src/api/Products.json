@@ -1,0 +1,45 @@
+[
+  {
+    "id": 1,
+    "name": "Blusa Estampada",
+    "img": "img1.jpg",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae sequi dolor at, qui esse aspernatur ipsam ducimus a voluptatum nobis alias! Reiciendis aspernatur adipisci alias possimus sunt, et ipsa perferendis.",
+    "price": 5
+  },{
+    "id": 2,
+    "name": "Falda Rayas",
+    "img": "img2.jpg",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae sequi dolor at, qui esse aspernatur ipsam ducimus a voluptatum nobis alias! Reiciendis aspernatur adipisci alias possimus sunt, et ipsa perferendis.",
+    "price": 6
+  },{
+    "id": 3,
+    "name": "Falda Corta",
+    "img": "img3.jpg",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae sequi dolor at, qui esse aspernatur ipsam ducimus a voluptatum nobis alias! Reiciendis aspernatur adipisci alias possimus sunt, et ipsa perferendis.",
+    "price": 3
+  },{
+    "id": 4,
+    "name": "Vestido Sencillo",
+    "img": "img4.jpg",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae sequi dolor at, qui esse aspernatur ipsam ducimus a voluptatum nobis alias! Reiciendis aspernatur adipisci alias possimus sunt, et ipsa perferendis.",
+    "price": 9
+  },{
+    "id": 5,
+    "name": "Vestido Negro",
+    "img": "img5.jpg",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae sequi dolor at, qui esse aspernatur ipsam ducimus a voluptatum nobis alias! Reiciendis aspernatur adipisci alias possimus sunt, et ipsa perferendis.",
+    "price": 5
+  },{
+    "id": 6,
+    "name": "Vestido Sin Magas",
+    "img": "img6.jpg",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae sequi dolor at, qui esse aspernatur ipsam ducimus a voluptatum nobis alias! Reiciendis aspernatur adipisci alias possimus sunt, et ipsa perferendis.",
+    "price": 10
+  },{
+    "id": 7,
+    "name": "Blusa Buchonada",
+    "img": "img7.jpg",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae sequi dolor at, qui esse aspernatur ipsam ducimus a voluptatum nobis alias! Reiciendis aspernatur adipisci alias possimus sunt, et ipsa perferendis.",
+    "price": 10
+  }
+]

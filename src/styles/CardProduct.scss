@@ -1,21 +1,75 @@
-.card-product {
+.card {
   width: 100%;
-  .card-product__img {
+  background-color: rgb(248, 248, 248);
+  padding: .2em;
+  .card__img {
     width: 100%;
+    height: 300px;
+    // margin: .5em;
+    // background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     img {
-      width: 100%;
+      width: 95%;
+      height: 95%;
       object-fit: cover;
     }
   }
-  .card-description {
-    background-color: rgb(248, 248, 248);
-    .card-description__title {
-      font-size: 1.8em;
+  .card__body {
+    padding: .2em;
+    .card__body__title {
+      font-size: 1.5em;
       font-family: "Amatic SC", cursive;
     }
-    .card-description__price {
+    .card__body__price {
       width: 100%;
       text-align: right;
+    }
+  }
+  .card__buttons {
+    button {
+      width: 100%;
+      outline: none;
+      color: #fff;
+      border: solid rgb(223,132,132) 2px;
+      background-color: rgb(223,132,132);
+      padding: 5px;
+      font-family: 'Amatic SC', cursive;
+      font-size: 1.3em;
+      &:hover {
+        background: none;
+        color: rgb(223,132,132);
+      }
+    }
+    .card__buttons__counter {
+      display: flex;
+      border: solid rgb(223,132,132) 2px;
+      color: rgb(223,132,132);
+      width: 100%;
+      justify-content: center;
+      padding: .1em 2em;
+
+      input[type="number"]{
+        color: rgb(223,132,132);
+        background: none;
+        border: none;
+        outline: none;
+        text-align: center;
+        // font-family: 'Amatic SC', cursive;
+        font-size: 1.4em;
+        user-select: none;
+        width: 4em;
+        cursor: default;
+      }
+
+      span.down,
+      span.up {
+        // font-family: 'Amatic SC', cursive;
+        font-size: 1.4em;
+        cursor: default;
+        user-select: none;
+      }
     }
   }
 }
