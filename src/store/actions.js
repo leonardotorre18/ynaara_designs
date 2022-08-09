@@ -1,6 +1,8 @@
 export const actionTypes = {
   ADD_TO_CART: 'ADD_TO_CART',
   RESET_CART: 'RESET_CART',
+  TOGGLE_MENU_CART: 'TOGGLE_MENU_CART',
+  DELETE_TO_CART: 'DELETE_TO_CART',
 };
 
 export const AddToCart = (id, price, count) => {
@@ -20,3 +22,19 @@ export const ResetCart = () => {
     payload: {}
   }
 }
+
+export const ToggleMenuCart = () => {
+  return {
+    type: actionTypes.TOGGLE_MENU_CART,
+    payload: {}
+  }
+}
+
+export const DeleteToCart = (id) => {
+  return {
+    type: actionTypes.DELETE_TO_CART,
+    payload: {
+      id
+    }
+  }
+} 

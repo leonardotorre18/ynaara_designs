@@ -1,3 +1,5 @@
+@import './Variables.scss';
+
 .jumbotron {
   width: 100%;
   padding: 1em .5em;
@@ -12,7 +14,7 @@
     }
   }
   .jumbotron__title {
-    font-family: 'Lobster Two';
+    font-family: $first-font;
     text-align: center;
     font-size: 1.7em;
   }

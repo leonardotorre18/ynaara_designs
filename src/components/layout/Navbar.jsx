@@ -9,7 +9,7 @@ export default function Navbar({ setShowShoppingCart} ) {
         <ul className="list">
           <li>Inicio</li>
           <li>Productos</li>
-          <li>Atención Personalizada</li>
+          {/* <li>Atención Personalizada</li> */}
           {/* <li>Colaboraciones</li> */}
         </ul>
         <IconCart setShowShoppingCart={setShowShoppingCart} />

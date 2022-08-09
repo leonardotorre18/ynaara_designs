@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
 // import propTypes from 'prop-types';
-import '../../styles/CardProduct.scss';
+import '../../styles/ProductCard.scss';
 import { connect } from 'react-redux/es/exports';
 import { AddToCart } from '../../store/actions';
 
-function CardProduct({ key, id, img, title, price, addToCart }){
+function ProductCard({ key, id, img, title, price, addToCart }){
 
   const counter = useRef(1);
   
@@ -25,6 +25,14 @@ function CardProduct({ key, id, img, title, price, addToCart }){
           }}
           type="submit"
         >Agregar al carrito</button>
+        <div className="card__buttons__select">
+          <span>Talla</span>
+          <select>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+          </select>
+        </div>
         <div className="card__buttons__counter">
           <span 
             className="down"
@@ -35,6 +43,7 @@ function CardProduct({ key, id, img, title, price, addToCart }){
             ref={counter} 
             defaultValue={1}
             min={1}
+            readOnly
           />
           <span 
           className="up"
@@ -52,4 +61,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(CardProduct);
+export default connect(null, mapDispatchToProps)(ProductCard);

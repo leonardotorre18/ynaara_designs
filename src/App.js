@@ -1,23 +1,18 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
 import Navbar from './components/layout/Navbar';
 import Jumbotron from './components/layout/Jumbotron';
 import Home from './views/Home';
-import ShoppingCart from './components/pure/ShoppingCart';
+import MenuCart from './components/layout/MenuCart';
 
 
 function App() {
-  const [showShoppigCart, setShowShoppingCart] = useState(false);
-
   return (
     <div className="App">
-      <Navbar setShowShoppingCart={setShowShoppingCart} />
+      <Navbar />
+      <MenuCart />
       <Jumbotron />
       <Home />
-      {
-        showShoppigCart && <ShoppingCart />
-      }
-      
     </div>
   );
 }

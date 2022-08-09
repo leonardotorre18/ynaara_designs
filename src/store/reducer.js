@@ -17,8 +17,21 @@ export default combineReducers({
       case actionTypes.RESET_CART:
         return [];
 
+      case actionTypes.DELETE_TO_CART:
+        return state.filter(e => e.id !== action.payload.id )
+
       default:
         return state;
     }
   },
+
+  menuCart: (state = false, action) => {
+    switch (action.type) {
+      case actionTypes.TOGGLE_MENU_CART:
+        return !state;
+    
+      default:
+        return state;
+    }
+  }
 });

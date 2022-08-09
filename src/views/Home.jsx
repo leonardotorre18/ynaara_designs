@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Grid from '../components/containers/Grid';
 import ProductsJSON from '../api/Products.json';
-import CardProduct from '../components/pure/CardProduct';
+import ProductCard from '../components/pure/ProductCard';
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -13,7 +13,7 @@ export default function Home() {
     <div>
       <Grid>
         {products.map((product, index) => {
-          return <CardProduct 
+          return <ProductCard 
             key={index}
             img={product.img}
             title={product.name}
