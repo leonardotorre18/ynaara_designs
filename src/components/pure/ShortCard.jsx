@@ -4,7 +4,7 @@ import trashIcon from '../../assets/iconmonstr-trash-can-27.svg';
 import { DeleteToCart } from '../../store/actions';
 import { connect } from 'react-redux/es/exports';
 
-function ShortCard({ id, title, count, img, deleteProduct }) {
+function ShortCard({ id, title, size, count, img, deleteProduct }) {
   return (
     <div className='short-card'>
       <div className="short-card__img">
@@ -12,6 +12,7 @@ function ShortCard({ id, title, count, img, deleteProduct }) {
       </div>
       <div className="short-card__body">
         <h3 className="title">{title}</h3>
+        <p className="count">Talla: {size}</p> 
         <p className="count">Cantidad: {count}</p> 
       </div>
       <div className="short-card__buttons">

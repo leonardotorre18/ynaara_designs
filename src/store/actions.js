@@ -5,11 +5,13 @@ export const actionTypes = {
   DELETE_TO_CART: 'DELETE_TO_CART',
 };
 
-export const AddToCart = (id, price, count) => {
+export const AddToCart = (id, name, size, price, count) => {
   return {
     type: actionTypes.ADD_TO_CART,
     payload: {
       id,
+      name,
+      size,
       price,
       count,
     }

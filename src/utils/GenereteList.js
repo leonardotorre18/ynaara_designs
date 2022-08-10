@@ -1,7 +1,12 @@
 function GenerateList (productsState, products) {
   const newList = [];
   productsState.forEach(element => {
-    newList.push({ ...products.find(e => e.id === element.id), count: element.count })
+    newList.push({ 
+      ...products.find(e => e.id === element.id),
+      size: element.size,
+      count: element.count 
+
+    })
   });
   return newList;
 }

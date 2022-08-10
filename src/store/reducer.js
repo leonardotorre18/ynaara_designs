@@ -5,9 +5,9 @@ export default combineReducers({
   products: (state = [], action) => {
     switch (action.type) {
       case actionTypes.ADD_TO_CART:
-        return state.some((e) => e.id === action.payload.id)
+        return state.some((e) => e.id === action.payload.id && e.size === action.payload.size)
 
-          ? state.map(e => e.id === action.payload.id 
+          ? state.map(e => e.id === action.payload.id && e.size === action.payload.size
             ? { ...e, count: e.count + action.payload.count }
             : e)
           : [

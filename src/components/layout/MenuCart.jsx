@@ -4,7 +4,9 @@ import ShortCard from '../pure/ShortCard';
 import { connect } from 'react-redux/es/exports';
 import ProductJSON from '../../api/Products.json';
 import GenerateList from '../../utils/GenereteList';
-import { ResetCart } from '../../store/actions'
+import { ResetCart } from '../../store/actions';
+import GenerateMessageWhatsapp from '../../utils/GenerateMessageWhatsapp';
+import GetFinalPrice from '../../utils/GetFinalPrice';
 
 function MenuCart({ products, visibilityMenuCart, resetCart }) {
 
@@ -22,10 +24,11 @@ function MenuCart({ products, visibilityMenuCart, resetCart }) {
           productsState.map((element, index) => {
             return <ShortCard 
               key={index} 
+              id={element.id}
+              size={element.size}
               title={element.name} 
               count={element.count} 
               img={element.img}
-              id={element.id}
             />
           })
         }
@@ -33,7 +36,10 @@ function MenuCart({ products, visibilityMenuCart, resetCart }) {
       <div className="menu-cart__buttons">
         <button
           className="buy"
-          onClick={resetCart}
+          onClick={()=> {
+            window.open(GenerateMessageWhatsapp(productsState,GetFinalPrice(productsState)));
+            resetCart();
+          }}
         >Comprar todo</button>
       </div>
     </div>

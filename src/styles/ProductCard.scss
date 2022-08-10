@@ -40,11 +40,13 @@
         width: 40%;
         justify-content: center;
         font-size: 1.3em;
-        color: $first-color;
+        color: $white-color;
+        background-color: $first-color;
         border: solid $first-color 2px;
       }
       display: flex;
       select {
+        width: 60%;
         font-family: $second-font;
         border: solid $first-color 2px;
         color: $first-color;

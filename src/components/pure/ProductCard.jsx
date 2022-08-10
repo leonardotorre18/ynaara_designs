@@ -7,6 +7,7 @@ import { AddToCart } from '../../store/actions';
 function ProductCard({ key, id, img, title, price, addToCart }){
 
   const counter = useRef(1);
+  const size = useRef('S');
   
   return (
     <div className="card" key={key}>
@@ -20,14 +21,14 @@ function ProductCard({ key, id, img, title, price, addToCart }){
       <div className="card__buttons">
         <button
           onClick={() => {
-            addToCart(id, price, counter.current.value);
+            addToCart(id, title, size.current.value, price, counter.current.value);
             counter.current.value = 1 
           }}
           type="submit"
         >Agregar al carrito</button>
         <div className="card__buttons__select">
           <span>Talla</span>
-          <select>
+          <select ref={size}>
             <option>S</option>
             <option>M</option>
             <option>L</option>
@@ -57,7 +58,7 @@ function ProductCard({ key, id, img, title, price, addToCart }){
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addToCart: (id, price, count) => dispatch(AddToCart(id, price, parseInt(count))),
+    addToCart: (id, name, size, price, count) => dispatch(AddToCart(id, name, size, price, parseInt(count))),
   };
 };
 

@@ -15,10 +15,11 @@ export default function Home() {
         {products.map((product, index) => {
           return <ProductCard 
             key={index}
-            img={product.img}
+            id={product.id} 
             title={product.name}
             price={product.price}
-            id={product.id} 
+            img={product.img}
+            size={product}
           />
         })}
       </Grid>
