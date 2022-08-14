@@ -2,9 +2,9 @@ import React, { useRef } from 'react';
 // import propTypes from 'prop-types';
 import '../../styles/ProductCard.scss';
 import { connect } from 'react-redux/es/exports';
-import { AddToCart } from '../../store/actions';
+import { addToCart } from '../../store/actions/shoppingCart'
 
-function ProductCard({ key, id, img, title, price, addToCart }){
+function ProductCard({ key, id, title, price, img, addProduct }){
 
   const counter = useRef(1);
   const size = useRef('S');
@@ -12,7 +12,7 @@ function ProductCard({ key, id, img, title, price, addToCart }){
   return (
     <div className="card" key={key}>
       <div className="card__img">
-        <img src={'img/'+img} alt="Imagen para ver" />
+        <img src={img} alt="Imagen para ver" />
       </div>
       <div className="card__body">
         <h3 className="card__body__title">{ title }</h3>
@@ -21,7 +21,7 @@ function ProductCard({ key, id, img, title, price, addToCart }){
       <div className="card__buttons">
         <button
           onClick={() => {
-            addToCart(id, title, size.current.value, price, counter.current.value);
+            addProduct(id, title, size.current.value, price, counter.current.value, img);
             counter.current.value = 1 
           }}
           type="submit"
@@ -58,8 +58,8 @@ function ProductCard({ key, id, img, title, price, addToCart }){
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addToCart: (id, name, size, price, count) => dispatch(AddToCart(id, name, size, price, parseInt(count))),
+    addProduct: (id, name, size, price, count, img) => dispatch(addToCart(id, name, size, price, parseInt(count), img)),
   };
 };
 
-export default connect(null, mapDispatchToProps)(ProductCard);
+export default connect(null,mapDispatchToProps)(ProductCard);

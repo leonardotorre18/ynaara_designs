@@ -1,14 +1,14 @@
 import React from 'react';
 import '../../styles/ShortCard.scss';
 import trashIcon from '../../assets/iconmonstr-trash-can-27.svg';
-import { DeleteToCart } from '../../store/actions';
+import { deleteToCart } from '../../store/actions/shoppingCart';
 import { connect } from 'react-redux/es/exports';
 
 function ShortCard({ id, title, size, count, img, deleteProduct }) {
   return (
     <div className='short-card'>
       <div className="short-card__img">
-        <img src={'/img/'+img} alt="" /> 
+        <img src={img} alt="" /> 
       </div>
       <div className="short-card__body">
         <h3 className="title">{title}</h3>
@@ -18,7 +18,7 @@ function ShortCard({ id, title, size, count, img, deleteProduct }) {
       <div className="short-card__buttons">
         <button
           onClick={()=> {
-            deleteProduct(id)
+            deleteProduct(id, size)
           }} 
         >
           <img src={trashIcon} alt="Trash Icon" />
@@ -29,7 +29,7 @@ function ShortCard({ id, title, size, count, img, deleteProduct }) {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    deleteProduct: (id) => dispatch(DeleteToCart(id)) 
+    deleteProduct: (id, size) => dispatch(deleteToCart(id, size)) 
   }
 }
 

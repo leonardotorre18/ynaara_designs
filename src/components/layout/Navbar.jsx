@@ -1,18 +1,18 @@
 import React from 'react';
 import '../../styles/Navbar.scss';
 import IconCart from '../pure/IconCart';
+import { Link } from 'react-router-dom';
 
-export default function Navbar({ setShowShoppingCart} ) {
+export default function Navbar() {
   return (
     <header className="header">
       <nav className="navbar">
         <ul className="list">
-          <li>Inicio</li>
-          <li>Productos</li>
-          {/* <li>Atención Personalizada</li> */}
-          {/* <li>Colaboraciones</li> */}
+          <Link to={'/'}>Inicio</Link>
+          <Link to={'/store'}>Tienda</Link>
+          <Link to={'/galery'}>Galería</Link>
         </ul>
-        <IconCart setShowShoppingCart={setShowShoppingCart} />
+        <IconCart />
       </nav>
     </header>
   );

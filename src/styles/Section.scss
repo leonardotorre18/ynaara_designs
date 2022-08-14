@@ -1,0 +1,12 @@
+@import './Variables.scss';
+
+section.section {
+  h2.title {
+    font-family: $first-font;
+    color: $black-color;
+    font-size: 2em;
+    width: 100%;
+    text-align: center;
+  }
+  padding: 1em;
+}

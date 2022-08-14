@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
 import Navbar from './components/layout/Navbar';
-import Jumbotron from './components/layout/Jumbotron';
-import Home from './views/Home';
+
 import MenuCart from './components/layout/MenuCart';
+import Navigation from './routes/Navigation';
 
 
 function App() {
@@ -11,8 +11,10 @@ function App() {
     <div className="App">
       <Navbar />
       <MenuCart />
-      <Jumbotron />
-      <Home />
+
+      {/* Routes in application */}
+      <Navigation />
+
     </div>
   );
 }

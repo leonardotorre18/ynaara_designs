@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import '../../styles/Jumbotron.scss';
 import logo from '../../assets/logo.png';
 
-export default function Jumbotron() {
+export default memo(function Jumbotron() {
   return (
     <div className="jumbotron">
       <div className="jumbotron__img">
@@ -11,4 +11,4 @@ export default function Jumbotron() {
       <h1 className="jumbotron__title">Ynaara Desings</h1>
     </div>
   );
-}
+})
