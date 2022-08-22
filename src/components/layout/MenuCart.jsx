@@ -42,6 +42,9 @@ function MenuCart({ products, showMenu, resetCart }) {
             resetCart();
           }}
         >Comprar todo</button>
+        <button
+          onClick={resetCart}
+        >Limpiar Carrito</button>
       </div> 
     </div>
   )

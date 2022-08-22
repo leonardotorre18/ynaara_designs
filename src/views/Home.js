@@ -29,21 +29,14 @@ export default function Home() {
       </Section>
       <Section>
         <h2 className="title">Conjuntos</h2>
-      <Carousel>
-        {
-          products.map((product, key) => {
+        <Carousel>
+          { products.map((product, key) => {
             return <div key={key}>
               <img src={product.img} alt="PArmas" />
             </div>
-          })
-        }
-      </Carousel>
+          }) }
+        </Carousel>
       </Section>
-      <div
-        style={{
-          'paddingBottom': '500px'
-        }}
-      />
     </div>
   )
 }

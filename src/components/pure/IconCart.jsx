@@ -4,8 +4,6 @@ import imgCart from '../../assets/iconmonstr-shopping-cart-2.svg';
 import { toggleMenuCart } from '../../store/actions/showMenuCart';
 import '../../styles/IconCart.scss';
 
-
-
 function IconCart({ products, toggleShow }) {
   
   return (

@@ -2,12 +2,15 @@ import React, { useRef } from 'react';
 // import propTypes from 'prop-types';
 import '../../styles/ProductCard.scss';
 import { connect } from 'react-redux/es/exports';
-import { addToCart } from '../../store/actions/shoppingCart'
+import { addToCart } from '../../store/actions/shoppingCart';
+import { useNotification } from '../containers/NotificationProvider';
 
 function ProductCard({ key, id, title, price, img, addProduct }){
 
   const counter = useRef(1);
   const size = useRef('S');
+
+  const dispatch = useNotification()
   
   return (
     <div className="card" key={key}>
@@ -22,7 +25,8 @@ function ProductCard({ key, id, title, price, img, addProduct }){
         <button
           onClick={() => {
             addProduct(id, title, size.current.value, price, counter.current.value, img);
-            counter.current.value = 1 
+            counter.current.value = 1
+            dispatch({ type: "ADD_NOTIFICATION", payload: {message: `${title} agregado al carrito`} }) 
           }}
           type="submit"
         >Agregar al carrito</button>

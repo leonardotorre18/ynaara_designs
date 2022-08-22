@@ -5,8 +5,9 @@ section.section {
     font-family: $first-font;
     color: $black-color;
     font-size: 2em;
+    padding: .5em;
     width: 100%;
     text-align: center;
   }
-  padding: 1em;
+  padding: 1em 0;
 }

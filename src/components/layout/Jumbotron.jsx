@@ -8,7 +8,7 @@ export default memo(function Jumbotron() {
       <div className="jumbotron__img">
         <img src={logo} alt="Ynaara Desings Logo" />
       </div>
-      <h1 className="jumbotron__title">Ynaara Desings</h1>
+      {/* <h1 className="jumbotron__title">Ynaara Desings</h1> */}
     </div>
   );
 })

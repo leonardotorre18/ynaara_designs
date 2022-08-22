@@ -1,0 +1,9 @@
+@import './Variables.scss';
+
+.message {
+  width: 100%;
+  padding: 1em 2em;
+  .message__param {
+    font-size: 1em;
+  }
+}
