@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Carousel from '../components/containers/Carousel';
+import Carousel, { Slider } from '../components/containers/Carousel';
 import Jumbotron from '../components/layout/Jumbotron';
 import ProductsJSON from '../api/products.json';
 import Section from '../components/containers/Section';
@@ -29,11 +29,13 @@ export default function Home() {
       </Section>
       <Section>
         <h2 className="title">Conjuntos</h2>
-        <Carousel>
+        <Carousel
+          items={2}
+        >
           { products.map((product, key) => {
-            return <div key={key}>
+            return <Slider key={key} width={2}>
               <img src={product.img} alt="PArmas" />
-            </div>
+            </Slider>
           }) }
         </Carousel>
       </Section>

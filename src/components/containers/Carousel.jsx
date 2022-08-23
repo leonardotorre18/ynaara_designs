@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import '../../styles/Carousel.scss';
-// import img from '../../assets/img/leonardo_torrealba.png';
+import styled from 'styled-components';
 import ArrowRight from '../../assets/iconmonstr-arrow-37.svg';
 import ArrowLeft from '../../assets/iconmonstr-arrow-79.svg';
 
-export default function Carousel({ children }) {
+function Carousel({ children , items }) {
   const SliderRef = useRef(null);
   const IntervalRef = useRef(null);
   const sliderRight = () => {
@@ -71,16 +71,9 @@ export default function Carousel({ children }) {
   return (
     <div className="carousel">
       <div className="carousel-slider" ref={SliderRef}>
+
         {children}
-        {/* <div className="carousel-slider__item">
-          Primero imagen
-        </div>
-        <div className="carousel-slider__item">
-          Segunda Imagne
-        </div>
-        <div className="carousel-slider__item">
-          Tercera Imagne
-        </div> */}
+
       </div>
       <div className="carousel-controllers">
         <button
@@ -101,3 +94,15 @@ export default function Carousel({ children }) {
     </div>
   );
 }
+
+export const Slider = styled.div`
+  min-width: ${ props => 100/props.width+'%' };
+  height: 400px;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+`;
+
+export default Carousel;
