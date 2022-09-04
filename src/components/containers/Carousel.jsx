@@ -4,25 +4,49 @@ import styled from 'styled-components';
 import ArrowRight from '../../assets/iconmonstr-arrow-37.svg';
 import ArrowLeft from '../../assets/iconmonstr-arrow-79.svg';
 
-function Carousel({ children , items }) {
+function Carousel({ children , items, responsive }) {
   const SliderRef = useRef(null);
   const IntervalRef = useRef(null);
-  const sliderRight = () => {
-    if (SliderRef.current.children.length > 0) {
-      // Get first element
-      const FirstChildren = SliderRef.current.children[0];
 
+  /**
+   * Change transtion style to an element
+   * @param {ref} element take slider ref to changes transition style
+   * @param {string} style new trasition style value to slider
+   */
+  const setTransition = (element, style) => {
+    element.current.style.transition = style
+  }
+  /**
+   * Change transform style to an element
+   * @param {ref} element take slider ref to changes transform style
+   * @param {string} style new trasform style value to slider
+   */
+  const setTransform = (element, style) => {
+    element.current.style.transform = style
+  }
+  /**
+   * Move position to element to receives
+   * @param {ref} slider take slider ref
+   */
+  const moveSlider = (slider) => {
+    const SliderWith = slider.current.children[0].offsetWidth;
+    setTransform(slider, `translateX(-${SliderWith}px)`);
+  }
+
+  const sliderRight = () => {
+    const children = SliderRef.current.children;
+    if (children.length > 0) {
+      // Get first element
+      const FirstChildren = children[0];
       // Send Transition to Container
-      SliderRef.current.style.transition = 'all linear .7s';
+      setTransition(SliderRef, 'all linear .7s');
       // Move Slider
-      const SliderWith = SliderRef.current.children[0].offsetWidth;
-      SliderRef.current.style.transform = `translateX(-${SliderWith}px)`;
+      moveSlider(SliderRef);
 
       const resetSlider = () => {
         // Reset position Slider
-        SliderRef.current.style.transition = 'none';
-        SliderRef.current.style.transform = 'translateX(0)';
-
+        setTransition(SliderRef, 'none');
+        setTransform(SliderRef, 'translateX(0)');
         // Push first element to the final list
         SliderRef.current.appendChild(FirstChildren);
 
@@ -33,18 +57,18 @@ function Carousel({ children , items }) {
   };
 
   const sliderLeft = () => {
-    if (SliderRef.current.children.length > 0) {
+    const children = SliderRef.current.children;
+    if (children.length > 0) {
       // Get last children
-      const LastChildren = SliderRef.current.children[SliderRef.current.children.length - 1];
-      SliderRef.current.insertBefore(LastChildren, SliderRef.current.children[0]);
+      const LastChildren = children[children.length - 1];
+      SliderRef.current.insertBefore(LastChildren, children[0]);
       // Move Slider
-      SliderRef.current.style.transition = 'none';
-      const SliderWith = SliderRef.current.children[0].offsetWidth;
-      SliderRef.current.style.transform = `translateX(-${SliderWith}px)`;
+      setTransition(SliderRef, 'none');
+      moveSlider(SliderRef);
 
       setTimeout(() => {
-        SliderRef.current.style.transition = 'all linear .7s';
-        SliderRef.current.style.transform = 'translateX(0)';
+        setTransition(SliderRef, 'all linear .7s');
+        setTransform(SliderRef, 'translateX(0)');
       }, 30);
     }
   };
@@ -70,11 +94,15 @@ function Carousel({ children , items }) {
 
   return (
     <div className="carousel">
-      <div className="carousel-slider" ref={SliderRef}>
+      <CarouselSlider
+        ref={SliderRef}
+        items={items}
+        responsive={ responsive === undefined ? {} : responsive}
+      >
 
         {children}
 
-      </div>
+      </CarouselSlider>
       <div className="carousel-controllers">
         <button
           className="carousel-controllers__arrow-left"
@@ -94,14 +122,28 @@ function Carousel({ children , items }) {
     </div>
   );
 }
-
-export const Slider = styled.div`
-  min-width: ${ props => 100/props.width+'%' };
+const CarouselSlider = styled.div`
+  display: flex;
+  width: 100%;
   height: 400px;
-  img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
+  div {
+    min-width: ${ props => props.items ? 100/props.items+'%' : '100%' };
+    ${props => {
+        let mediaQuerys = '';
+        for (let query of Object.entries(props.responsive)) {
+          mediaQuerys += `@media (min-width: ${query[0]}px) {
+            min-width: ${100/query[1]}%;
+          };
+          `
+        }
+        return mediaQuerys;
+    }}
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
   }
 `;
 

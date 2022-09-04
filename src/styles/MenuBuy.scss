@@ -1,0 +1,120 @@
+@import './Variables.scss';
+@import './Mixins.scss';
+
+.menu-buy {
+  position: fixed;
+  height: calc(100vh - 60px - 2em);
+  width: calc(100vw - 2em);
+  top: $height-navbar;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+
+  left: 0;
+  z-index: 20;
+  background-color: $white-color;
+
+  box-shadow: 0 0 60px 30px rgba(0,0,0,.8);
+  margin: 1em;
+
+  h2.title {
+    font-family: $first-font;
+    padding: .7em;
+    font-size: 2em;
+    color: $black-color;
+    width: 100%;
+    text-align: center;
+  }
+  .menu-buy__body {
+    max-width: 576px;
+    overflow-y: auto;
+    .menu-buy__body__img {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1em;
+      img {
+        height: 100%;
+        max-width: 300px;
+        object-fit: cover;
+      }
+    }
+    h3.title {
+      padding: .2em;
+      font-size: 1.5em;
+      font-family: $second-font;
+    }
+    .menu-buy__body__select {
+      display: flex;
+      span {
+        font-family: $second-font;
+        display: flex;
+        align-items: center;
+        width: 40%;
+        justify-content: center;
+        font-size: 1.3em;
+        color: $white-color;
+        background-color: $first-color;
+        border: solid $first-color 2px;
+      }
+      select {
+        width: 60%;
+        font-family: $second-font;
+        border: solid $first-color 2px;
+        color: $first-color;
+        padding: .1em 2em;
+        outline: none;
+        font-size: 1.4em;
+        text-align: center;
+        background: none;
+        option {
+          text-align: center;
+          font-family: $second-font;
+        }
+      }
+    }
+    .menu-buy_body__count {
+      display: flex;
+      border: solid $first-color 2px;
+      color: $first-color;
+      width: 100%;
+      justify-content: center;
+      padding: .1em 2em;
+      input[type="number"]{
+        color: $first-color;
+        background: none;
+        border: none;
+        outline: none;
+        text-align: center;
+        font-size: 1.4em;
+        user-select: none;
+        width: 4em;
+        cursor: default;
+      }
+      span.down,
+      span.up {
+        font-size: 1.4em;
+        cursor: default;
+        user-select: none;
+      }
+    }
+    .menu-buy__body__buttons {
+      padding: 1em;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      button {
+        @include button;
+        width: max-content;
+        font-size: 1.6em;
+        margin: 0 10px;
+      }
+    }
+  }
+
+  &.menu-buy--hidden {
+    display: none;
+  }
+}

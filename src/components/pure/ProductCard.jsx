@@ -1,17 +1,9 @@
-import React, { useRef } from 'react';
-// import propTypes from 'prop-types';
+import React from 'react';
 import '../../styles/ProductCard.scss';
 import { connect } from 'react-redux/es/exports';
-import { addToCart } from '../../store/actions/shoppingCart';
-import { useNotification } from '../containers/NotificationProvider';
+import { setBuy } from '../../store/actions/currentBuy';
 
-function ProductCard({ key, id, title, price, img, addProduct }){
-
-  const counter = useRef(1);
-  const size = useRef('S');
-
-  const dispatch = useNotification()
-  
+function ProductCard({ key, id, title, price, img, setBuy }){
   return (
     <div className="card" key={key}>
       <div className="card__img">
@@ -24,37 +16,15 @@ function ProductCard({ key, id, title, price, img, addProduct }){
       <div className="card__buttons">
         <button
           onClick={() => {
-            addProduct(id, title, size.current.value, price, counter.current.value, img);
-            counter.current.value = 1
-            dispatch({ type: "ADD_NOTIFICATION", payload: {message: `${title} agregado al carrito`} }) 
+            setBuy({
+              id, 
+              title,
+              price: parseInt(price),
+              img,
+            });
           }}
           type="submit"
         >Agregar al carrito</button>
-        <div className="card__buttons__select">
-          <span>Talla</span>
-          <select ref={size}>
-            <option>S</option>
-            <option>M</option>
-            <option>L</option>
-          </select>
-        </div>
-        <div className="card__buttons__counter">
-          <span 
-            className="down"
-            onClick={() => counter.current.value > 1 ? counter.current.value-- : null}
-          >-</span>
-          <input 
-            type="number" 
-            ref={counter} 
-            defaultValue={1}
-            min={1}
-            readOnly
-          />
-          <span 
-          className="up"
-          onClick={() => counter.current.value++}
-          >+</span>
-        </div>
       </div>
     </div>
   );
@@ -62,7 +32,7 @@ function ProductCard({ key, id, title, price, img, addProduct }){
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addProduct: (id, name, size, price, count, img) => dispatch(addToCart(id, name, size, price, parseInt(count), img)),
+    setBuy: (product) => dispatch(setBuy(product)),
   };
 };
 

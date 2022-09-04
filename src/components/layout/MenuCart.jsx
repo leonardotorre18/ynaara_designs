@@ -1,21 +1,11 @@
-// import React, { useEffect, useState } from 'react'
 import '../../styles/MenuCart.scss';
-// import img from '../../assets/logo.png'
 import ShortCard from '../pure/ShortCard';
 import { connect } from 'react-redux/es/exports';
-// import ProductJSON from '../../api/Products.json';
-// import GenerateList from '../../utils/GenereteList';
 import { resetCart } from '../../store/actions/shoppingCart';
 import newMessageWhatsapp from '../../utils/newMessageWhatsapp';
 import getPrice from '../../utils/getPrice';
 
 function MenuCart({ products, showMenu, resetCart }) {
-
-  // const [productsState, setProductsState] = useState([])
-
-  // useEffect(()=> {
-  //   setProductsState(GenerateList(products, ProductJSON))
-  // },[products])
   
   return (
     <div className={showMenu ? 'menu-cart menu-cart--visible' : 'menu-cart'}>

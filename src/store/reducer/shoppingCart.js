@@ -8,7 +8,7 @@ const shoppingCart = (state = [], action) => {
       return state.some((e) => e.id === action.payload.id && e.size === action.payload.size)
 
         ? state.map(e => e.id === action.payload.id && e.size === action.payload.size
-          ? { ...e, count: e.count + action.payload.count }
+          ? { ...e, count: parseInt(e.count) + parseInt(action.payload.count) }
           : e)
         : [
           ...state,

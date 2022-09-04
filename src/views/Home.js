@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Carousel, { Slider } from '../components/containers/Carousel';
+import Carousel from '../components/containers/Carousel';
 import Jumbotron from '../components/layout/Jumbotron';
 import ProductsJSON from '../api/products.json';
 import Section from '../components/containers/Section';
@@ -31,11 +31,17 @@ export default function Home() {
         <h2 className="title">Conjuntos</h2>
         <Carousel
           items={2}
+          responsive={{
+            576: 2,
+            768: 3,
+            992: 4,
+            1200: 5,
+          }}
         >
           { products.map((product, key) => {
-            return <Slider key={key} width={2}>
+            return <div key={key} width={2}>
               <img src={product.img} alt="PArmas" />
-            </Slider>
+            </div>
           }) }
         </Carousel>
       </Section>

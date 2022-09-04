@@ -1,16 +1,9 @@
 import actionTypes from "./actionTypes"
 
-export const addToCart = (id, name, size, price, count, img) => {
+export const addToCart = (product) => {
   return {
     type: actionTypes.ADD_TO_CART,
-    payload: {
-      id,
-      name,
-      size,
-      price,
-      count,
-      img,
-    }
+    payload: product
   }
 }
 
