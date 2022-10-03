@@ -7,7 +7,7 @@ function ProductCard({ key, id, title, price, img, setBuy }){
   return (
     <div className="card" key={key}>
       <div className="card__img">
-        <img src={img} alt="Imagen para ver" />
+        <img src={img} alt="Imagen para ver" loading="lazy" />
       </div>
       <div className="card__body">
         <h3 className="card__body__title">{ title }</h3>

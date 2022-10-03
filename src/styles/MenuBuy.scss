@@ -29,6 +29,10 @@
   .menu-buy__body {
     max-width: 576px;
     overflow-y: auto;
+    @media (max-width: 576px) {
+      width: 100%;
+      padding: 0 1em;
+    }
     .menu-buy__body__img {
       width: 100%;
       display: flex;
@@ -63,7 +67,7 @@
         font-family: $second-font;
         border: solid $first-color 2px;
         color: $first-color;
-        padding: .1em 2em;
+        padding: .1em 0;
         outline: none;
         font-size: 1.4em;
         text-align: center;

@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Grid from '../components/containers/Grid';
 import Container from '../components/containers/Container';
 import ProductCard from '../components/pure/ProductCard';
 import SearchBar from '../components/pure/SearchBar';
-import getListing from '../utils/getListing';
 import Message from '../components/pure/Message';
+import useFilter from '../hooks/useFilter';
+import useProductList from '../hooks/useProductList';
 
-export default function Products() {
-  const [listing, setListing] = useState(getListing());
-  const [filter, setFilter] = useState('');
+function Products() {
+  const [filter, setFilter] = useFilter('');
+  const [products, setProducts] = useProductList()
 
-  useEffect(()=> {
-    setListing(getListing())
-    setListing(state => {
-      return state.filter(e => e.name.toLowerCase().includes(filter.toLowerCase()))
-    })
+  useEffect(() => {
+    setProducts(filter)
   },[filter])
+
 
   return (
     <Container>
@@ -24,10 +23,10 @@ export default function Products() {
     <SearchBar setFilter={setFilter} />
       
       { 
-      listing.length > 0
+      products.length > 0
       ?
       <Grid>
-        { listing.map((product, index) => {
+        { products.map((product, index ) => {
           return <ProductCard 
             key={index}
             id={product.id} 
@@ -48,3 +47,6 @@ export default function Products() {
   </Container>
   )
 }
+
+
+export default Products

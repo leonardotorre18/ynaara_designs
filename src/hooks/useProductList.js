@@ -1,12 +1,7 @@
-import React, { useState } from 'react';
-import Carousel from '../components/containers/Carousel';
-import Jumbotron from '../components/layout/Jumbotron';
-import Section from '../components/containers/Section';
+import {  useState, useRef } from "react";
 
-
-export default function Home() {
-  
-  const listing = [
+const useProductList = () => {
+  const state = useRef([
     {
       "id": 1,
       "name": "Blusa Mangas Largas Verde",
@@ -169,26 +164,22 @@ export default function Home() {
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae sequi dolor at, qui esse aspernatur ipsam ducimus a voluptatum nobis alias! Reiciendis aspernatur adipisci alias possimus sunt, et ipsa perferendis.",
       "price": 6
     }
-  ];
-  
-  const getListing = (length) => {
-    
-    const data = listing.sort(function() {return Math.random() - 0.5});
-  
-    if (length) return data.splice(0,length);
-    else return data;
-  
+  ]);
+  const [tempList, setTempList] = useState(state);
+
+
+  const filterList = (filter) => {
+    if (filter.length > 0 ) {
+      setTempList(
+        state.current.filter(
+          product => product.name.trim().toLowerCase().includes(filter)
+        )
+      );
+      console.log(tempList)
+    } else setTempList(state.current)
   }
-  const [products, setProducts] = useState(getListing(6));
 
-
-  return (
-    <div>
-      <Jumbotron />
-      <Section>
-        <h2 className="title">Lo que tenemos para ofrecerte</h2>
-        <Carousel products={products} />
-      </Section>
-    </div>
-  )
+  return [tempList, filterList];
 }
+
+export default useProductList;

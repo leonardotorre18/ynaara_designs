@@ -12,7 +12,6 @@ function Navbar({ clearBuy }) {
         <ul className="list">
           <Link to={'/'}>Inicio</Link>
           <Link to={'/store'}>Tienda</Link>
-          <Link to={'/galery'}>Galería</Link>
         </ul>
         <IconCart />
       </nav>

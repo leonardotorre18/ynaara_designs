@@ -1,4 +1,4 @@
-const listing = [
+const data = [
   {
     "id": 1,
     "name": "Blusa Mangas Largas Verde",
@@ -161,15 +161,5 @@ const listing = [
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae sequi dolor at, qui esse aspernatur ipsam ducimus a voluptatum nobis alias! Reiciendis aspernatur adipisci alias possimus sunt, et ipsa perferendis.",
     "price": 6
   }
-];
-
-const getListing = (length) => {
-  
-  const data = listing.sort(function() {return Math.random() - 0.5});
-
-  if (length) return data.splice(0,length);
-  else return data;
-
-}
-
-export default getListing;
+]
+export default data;
