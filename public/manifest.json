@@ -1,0 +1,9 @@
+{
+  "short_name": "YNaara Designs",
+  "name": "YNaara Designs",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#df8484",
+  "background_color": "#df8484"
+}

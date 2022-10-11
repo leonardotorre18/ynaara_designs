@@ -1,10 +1,12 @@
 @import './Variables.scss';
 
 section.section {
+  width: 100%;
+  background-color: $first-color;
   h2.title {
     font-family: $first-font;
-    color: $black-color;
-    font-size: 2em;
+    color: $white-color;
+    font-size: $extralarge-font-size;
     padding: .5em;
     width: 100%;
     text-align: center;

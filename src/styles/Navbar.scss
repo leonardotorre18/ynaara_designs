@@ -13,6 +13,13 @@ header.header {
     display: flex;
     padding: 0 1em;
 
+    .logo {
+      padding-bottom: 10px;
+      img {
+        height: 100%;
+      }
+    }
+
     ul.list {
       width: 100%;
       height: 100%;
@@ -24,9 +31,9 @@ header.header {
       a {
         text-decoration: none;
         margin: 0 .4em;
-        font-family: $second-font;
+        font-family: $first-font;
         color: #fff;
-        font-size: 1.6em;
+        font-size: $large-font-size;
         width: max-content;
         cursor: default;
       }

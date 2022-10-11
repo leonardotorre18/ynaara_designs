@@ -1,15 +1,13 @@
-// import "../../styles/Carousel.scss";
-
 import React from 'react';
 import OwlCarousel from 'react-owl-carousel3';
 
-
 export default function Carousel({products}) {
   return (
-    <OwlCarousel 
-      className="owl-theme"
-      margin={10}
+    <OwlCarousel
       loop
+      className="owl-theme"
+      autoplay
+      margin={10}
       items={1}
       autoplayTimeout={4000}
       autoplayHoverPause={true}
@@ -29,7 +27,7 @@ export default function Carousel({products}) {
     >
           { products.map((product, key) => {
             return <div key={key}>
-              <img src={product.img} alt="Ropa a la venta" />
+              <img src={product} alt="Ropa a la venta" />
             </div>
           }) }
     </OwlCarousel>

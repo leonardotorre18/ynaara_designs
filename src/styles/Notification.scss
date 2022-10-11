@@ -22,7 +22,9 @@
     animation-timing-function: ease-out;
     animation-fill-mode: forwards;
     .notification__text {
-      padding: 0 1em;
+      // padding: 0 1em;
+      font-family: $second-font;
+      font-size: $normal-font-size;
     }
     .notification__icon {
       padding: .3em;

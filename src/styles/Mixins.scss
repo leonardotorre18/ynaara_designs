@@ -7,8 +7,8 @@
   border: solid $first-color 2px;
   background-color: $first-color;
   padding: 5px;
+  font-size: $medium-font-size;
   font-family: $second-font;
-  font-size: 1.3em;
   &:hover {
     background: none;
     color: $first-color;

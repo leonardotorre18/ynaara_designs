@@ -6,10 +6,20 @@ import SearchBar from '../components/pure/SearchBar';
 import Message from '../components/pure/Message';
 import useFilter from '../hooks/useFilter';
 import useProductList from '../hooks/useProductList';
+import MenuBuy from '../components/layout/MenuBuy';
+import { connect } from 'react-redux';
+import { useState } from 'react';
+import { products as productsImport  } from '../data/products';
 
-function Products() {
+function Store({currentBuy}) {
   const [filter, setFilter] = useFilter('');
-  const [products, setProducts] = useProductList()
+  const [products, setProducts] = useProductList(productsImport);
+  const [showBuy, setShowBuy] = useState(false);
+
+
+  useEffect(()=> {
+    setShowBuy(Object.entries(currentBuy).length !== 0)
+  },[currentBuy])
 
   useEffect(() => {
     setProducts(filter)
@@ -17,23 +27,22 @@ function Products() {
 
 
   return (
+    <>
+    {
+      showBuy && <MenuBuy state={currentBuy} />
+    }
     <Container>
       <h1 className="title">Tienda</h1>
-    
-    <SearchBar setFilter={setFilter} />
+      <SearchBar setFilter={setFilter} />
       
       { 
       products.length > 0
       ?
       <Grid>
-        { products.map((product, index ) => {
+        { products.map((product, key ) => {
           return <ProductCard 
-            key={index}
-            id={product.id} 
-            title={product.name}
-            price={product.price}
-            img={product.img}
-            size={product.size}
+            key={key}
+            {...product}
           />
         })}
       </Grid>
@@ -45,8 +54,13 @@ function Products() {
       <Message>No hay articulos disponibles</Message>
       }
   </Container>
+    </>
   )
 }
+const mapStateToProps = (state) => {
+  return {
+    currentBuy: state.currentBuy,
+  }
+}
 
-
-export default Products
+export default connect(mapStateToProps, null)(Store);

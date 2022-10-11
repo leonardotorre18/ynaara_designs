@@ -6,18 +6,19 @@
 
   img {
     height: 100%;
-    padding: 1em;
+    padding: .65em;
   }
 
   span.number {
     position: absolute;
     top: 0;
     right: 0;
-    margin: .3em;
+    margin: .15em;
     background-color: $white-color;
     width: 1.3em;
     height: 1.3em;
-    font-size: 1em;
+    font-size: $normal-font-size;
+    font-family: $second-font;
     line-height: 1.4em;
     color: $first-color;
     text-align: center;

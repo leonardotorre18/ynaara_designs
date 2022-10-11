@@ -4,6 +4,7 @@ import { connect } from 'react-redux/es/exports';
 import { resetCart } from '../../store/actions/shoppingCart';
 import newMessageWhatsapp from '../../utils/newMessageWhatsapp';
 import getPrice from '../../utils/getPrice';
+import Message from '../pure/Message'
 
 function MenuCart({ products, showMenu, resetCart }) {
   
@@ -12,6 +13,7 @@ function MenuCart({ products, showMenu, resetCart }) {
       <h3 className="menu-cart__title">Shopping Cart</h3>
       <div className="menu-cart__list">
         {
+          products.length > 0 ?
           products.map((element, index) => {
             return <ShortCard 
               key={index} 
@@ -21,7 +23,7 @@ function MenuCart({ products, showMenu, resetCart }) {
               count={element.count} 
               img={element.img}
             />
-          })
+          }) : <Message>Agregue productos al carrito</Message>
         }
       </div>
       <div className="menu-cart__buttons">

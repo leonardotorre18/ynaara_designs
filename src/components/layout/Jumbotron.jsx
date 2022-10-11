@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import '../../styles/Jumbotron.scss';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/logo.svg';
 
 export default memo(function Jumbotron() {
   return (

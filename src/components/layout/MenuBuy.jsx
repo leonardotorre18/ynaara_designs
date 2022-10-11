@@ -1,40 +1,64 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import '../../styles/MenuBuy.scss';
 import { connect } from 'react-redux/es/exports';
 import { addToCart } from '../../store/actions/shoppingCart';
 import { clearBuy } from '../../store/actions/currentBuy';
 import { useNotification } from '../containers/NotificationProvider';
+import OwlCarousel from 'react-owl-carousel3';
+import { useState } from 'react';
 
 function MenuBuy({ state, addProduct, clearBuy }) {
   
-  const [isVisible, setVisible] = useState(false)
   const counter = useRef(1);
   const size = useRef('S');
-
-  const dispatch = useNotification()
+  const [product, setProduct] = useState(state)
+  
   
 
-  useEffect(()=> {
-    setVisible(Object.entries(state).length !== 0)
-  },[state])
-
+  const dispatch = useNotification();
+  
+  
+  
   return (
-    <div 
-      className={isVisible ? 'menu-buy' : 'menu-buy menu-buy--hidden' }
-    >
-      <h2 className="title">Menu Buy</h2>
+    <div className="menu-buy">
+      <h2 className="title">Menu de Compra</h2>
       <div className="menu-buy__body">
-        <div className="menu-buy__body__img">
-          <img src={state.img} alt="Imagen del Producto" />
-        </div>
-        <h3 className="title">{ state.title }</h3>
+
+        {
+          product.img.length > 1 ? (
+            <OwlCarousel
+              items={1}
+              className="owl-theme"
+              >
+              {
+                product.img.map((img, key) => (
+                  <div className="menu-buy__body__img" key={key}>
+                    <img src={img} alt="Imagen del Producto" />
+                  </div>
+            
+            ))
+          }
+            </OwlCarousel>
+          ): (
+            <div className="menu-buy__body__img">
+              <img src={product.img[0]} alt="Imagen del Producto" />
+            </div>
+          )
+        }
+
+        <h3 className="title">{ product.name }</h3>
         {/* Select product size */}
         <div className="menu-buy__body__select">
           <span>Talla</span>
           <select ref={size}>
-            <option>S</option>
+            {
+              product.sizes.map(i => (
+                <option>{i}</option>
+              ))
+            }
+            {/* <option>S</option>
             <option>M</option>
-            <option>L</option>
+            <option>L</option> */}
           </select>
         </div>
         {/* Select how many products */}
@@ -62,33 +86,28 @@ function MenuBuy({ state, addProduct, clearBuy }) {
             onClick={()=>{
               clearBuy();
               counter.current.value = 1;
-              size.current.value = 'S';
+              size.current.value = 's';
             }}
-          >Cancelar compra</button>
+          >Cancelar</button>
           <button 
             onClick={()=>{
               addProduct({
-                ...state,
+                ...product,
                 count: counter.current.value,
                 size: size.current.value
               })
-              dispatch({ type: "ADD_NOTIFICATION", payload: {message: `${state.title} agregado al carrito`} })
+              dispatch({ type: "ADD_NOTIFICATION", payload: {message: `${product.name} agregado al carrito`} })
               clearBuy();
               counter.current.value = 1;
-              size.current.value = 'S';
+              size.current.value = 's';
             }}
-            type="submit">Agregar al Carrito</button>
+            type="submit">Agregar</button>
         </div>
       </div>
     </div>
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    state: state.currentBuy
-  }
-}
 const mapDispatchToProps = (dispatch) => {
   return {
     addProduct: (product) => dispatch(addToCart(product)),
@@ -96,4 +115,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MenuBuy);
+export default connect(null, mapDispatchToProps)(MenuBuy);

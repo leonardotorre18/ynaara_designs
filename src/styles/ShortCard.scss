@@ -25,11 +25,12 @@
     flex-direction: column;
     justify-content: center;
     padding: .5em;
-    h3.title {
-      font-family: $second-font;
-      font-size: 1.6em;
-    }
+    // h3.title {
+    //   font-family: $second-font;
+    // }
     p.count {
+      font-family: $second-font;
+      font-size: $normal-font-size;
       padding: .3em;
     }
   }
