@@ -1,0 +1,19 @@
+@import './Variables.scss';
+
+.burger {
+  width: 60px;
+  height: 100%;
+  // padding: $small-size 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  span.burger__content {
+    width: 100%;
+    height: .2em;
+    background-color: white;
+  }
+  @media (min-width: 576px) {
+    display: none;
+  }
+}

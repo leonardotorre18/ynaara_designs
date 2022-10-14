@@ -37,6 +37,30 @@ header.header {
         width: max-content;
         cursor: default;
       }
+      @media (max-width: 576px) {
+        position: fixed;
+        background-color: $first-color;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        transition: left .6s ease-in;
+        z-index: -10;
+        // padding-top: $height-nav;
+        li {
+          // margin: $small-size;
+          a {
+            // font-size: $extra-large-size;
+          }
+        }
+        &.hidden{
+          left: -100%;
+        }
+      }
     }
   }
 }
