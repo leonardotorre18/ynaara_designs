@@ -23,6 +23,7 @@ function Navbar({ clearBuy }) {
   return (
     <header className="header" onClick={clearBuy}>
       <nav className="navbar">
+        <BurgerButton onClick={changedClicked} />
         <div className="logo">
           <img src={logo} alt="logo" />
         </div>
@@ -30,8 +31,10 @@ function Navbar({ clearBuy }) {
           <Link onClick={falseClicked} to={'/'}>Inicio</Link>
           <Link onClick={falseClicked} to={'/store'}>Tienda</Link>
         </ul>
-        <BurgerButton onClick={changedClicked} />
-        <IconCart />
+        {/* Link */}
+        <Link to={'/cart'} className='icon-cart-link'>
+          <IconCart />
+        </Link>
       </nav>
     </header>
   );

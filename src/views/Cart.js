@@ -1,16 +1,19 @@
-import '../../styles/MenuCart.scss';
-import ShortCard from '../pure/ShortCard';
+import '../styles/MenuCart.scss';
+import ShortCard from '../components/pure/ShortCard';
 import { connect } from 'react-redux/es/exports';
-import { resetCart } from '../../store/actions/shoppingCart';
-import newMessageWhatsapp from '../../utils/newMessageWhatsapp';
-import getPrice from '../../utils/getPrice';
-import Message from '../pure/Message'
+import { resetCart } from '../store/actions/shoppingCart';
+import newMessageWhatsapp from '../utils/newMessageWhatsapp';
+import getPrice from '../utils/getPrice';
+import Message from '../components/pure/Message';
+import { Link } from 'react-router-dom';
+import Container from '../components/containers/Container';
 
-function MenuCart({ products, showMenu, resetCart }) {
+
+function MenuCart({ products, resetCart }) {
   
   return (
-    <div className={showMenu ? 'menu-cart menu-cart--visible' : 'menu-cart'}>
-      <h3 className="menu-cart__title">Shopping Cart</h3>
+    <Container>
+      <h1 className="title">Carrito de Compras</h1>
       <div className="menu-cart__list">
         {
           products.length > 0 ?
@@ -23,7 +26,7 @@ function MenuCart({ products, showMenu, resetCart }) {
               count={element.count} 
               img={element.img}
             />
-          }) : <Message>Agregue productos al carrito</Message>
+          }) : <Message>Agregue productos al carrito <Link to={'/store'}>Aquí...</Link></Message>
         }
       </div>
       <div className="menu-cart__buttons">
@@ -38,7 +41,7 @@ function MenuCart({ products, showMenu, resetCart }) {
           onClick={resetCart}
         >Limpiar Carrito</button>
       </div> 
-    </div>
+    </Container>
   )
 }
 

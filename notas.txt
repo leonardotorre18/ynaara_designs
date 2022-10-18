@@ -1,4 +1,3 @@
-Animación al abrir el menú de compra
 Mejora las notificaciones
 los bordes deben redondearse
 footer con la navegación
@@ -10,7 +9,6 @@ blusas 3x15$
 6por 27$
 
 Talla unica
-Error en el mensaje dice undefined
 
 Recibir fotos y servicio para pagina confección a medida
 
@@ -33,5 +31,32 @@ Aprovecha nuestra oferta 3 blusas por 15$
 y 6 blusas por 27$
 
 Hacemos entregas a nivel nacional
+
+
+
+
+
+Sueter de algodón Stress 
+Talla única para todos los tamaños
+50cm de largo y mangas de 75cm de largo
+
+6$ c/u
+
+Aprovecha nuestra OFERTA de:
+	6 blusas por 27$
+	3 blusas por 15$
+
+Haz tu pedido por DM o Escribenos al whatsapp: 0412-8920206
+
+Tambien has tu pedido facil y rapido desde nuestra tienda virtual
+ynaara-designs.netlify.app
+
+Hacemos entregas a nivel nacional
+
+#valencia #ropa #moda #blusas #ynaaradesigns
+
+
+
+
 
 

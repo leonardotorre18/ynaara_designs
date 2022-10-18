@@ -1,60 +1,33 @@
 @import './Mixins.scss';
 @import './Variables.scss';
 
-.menu-cart {
-  height: 100%;
-  transition: all 1s ease-out;
-  text-align: center;
+.menu-cart__title {
+  font-family: $first-font;
+  padding: .7em;
+  font-size: 2em;
   background-color: $white-color;
-  position: fixed;
+  position: sticky;
   top: 0;
-  padding-top: $height-navbar;
-  overflow-y: auto;
-  z-index: 10;
-  right: -500px;
-  width: 500px;
-  height: 100%;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  // border: solid $first-color 5px;
-  
-  @media (max-width: 576px) {
-    right: -100vw;
-    width: 100vw;
-  }
-
-  .menu-cart__title {
-    font-family: $first-font;
-    padding: .7em;
-    font-size: 2em;
-    background-color: $white-color;
-    position: sticky;
-    top: 0;
-  }
-  .menu-cart__list {
-    padding: 1em;
-    overflow-y: auto;
-    flex-grow: 1;
-  }
-  .menu-cart__buttons {
-    padding: 1em;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $white-color;
-    position: sticky;
-    bottom: 0;
-    left: 0;
-
-    button {
-      @include button;
-      width: max-content;
-      margin: 0 10px;
-    }
-  }
 }
-.menu-cart--visible {
-  right: 0;
+.menu-cart__list {
+  padding: 1em;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+.menu-cart__buttons {
+  padding: 1em;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $white-color;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+
+  button {
+    @include button;
+    width: max-content;
+    margin: 0 10px;
+  }
 }
