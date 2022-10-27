@@ -1,112 +1,79 @@
-import React, { useRef } from 'react';
-import '../../styles/MenuBuy.scss';
+import React, { useState, useRef} from 'react';
+import OwlCarousel from 'react-owl-carousel3';
+import { motion } from 'framer-motion';
 import { connect } from 'react-redux/es/exports';
+import { AiFillCloseCircle } from 'react-icons/ai';
+import { toast } from 'react-hot-toast'
+import { MdExpandLess,MdExpandMore } from 'react-icons/md';
 import { addToCart } from '../../store/actions/shoppingCart';
 import { clearBuy } from '../../store/actions/currentBuy';
-import { useNotification } from '../containers/NotificationProvider';
-import OwlCarousel from 'react-owl-carousel3';
-import { useState } from 'react';
 
-function MenuBuy({ state, addProduct, clearBuy }) {
-  
-  const counter = useRef(1);
-  const size = useRef('S');
-  const [product, setProduct] = useState(state)
-  
-  
+const MenuBuy = ({id, name, img = [], price, sizes = ['Talla Única'], clearBuy, addProduct}) => {
+  const [count, setCount] = useState(1);
+  const size = useRef(null);
 
-  const dispatch = useNotification();
-  
-  
-  
+  const addCount = () => {
+    setCount(count+1);
+  }
+  const sustractCount = () => {
+    count > 1 && setCount(count-1)
+  }
+
   return (
-    <div className="menu-buy">
-      <h2 className="title">Menu de Compra</h2>
-      <div className="menu-buy__body">
-
-        {
-          product.img.length > 1 ? (
-            <OwlCarousel
-              items={1}
-              className="owl-theme"
-              >
-              {
-                product.img.map((img, key) => (
-                  <div className="menu-buy__body__img" key={key}>
-                    <img src={img} alt="Imagen del Producto" />
-                  </div>
-            
-            ))
-          }
-            </OwlCarousel>
-          ): (
-            <div className="menu-buy__body__img">
-              <img src={product.img[0]} alt="Imagen del Producto" />
-            </div>
-          )
-        }
-
-        <h3 className="title">{ product.name }</h3>
-        {/* Select product size */}
-        <div className="menu-buy__body__select">
-          <span>Talla</span>
-          <select ref={size}>
-            {
-              product.sizes.map(i => (
-                <option>{i}</option>
-              ))
-            }
-            {/* <option>S</option>
-            <option>M</option>
-            <option>L</option> */}
+    <motion.div 
+      className="fixed bg-white shadow-xl p-4 z-10 top-16 left-0 w-full h-full overflow-y-scroll"
+      initial={{scale: 0}}
+      animate={{scale: 1}}
+      exit={{scale: 0}}
+    >
+      <div className="max-w-5xl mx-auto">
+      <button onClick={clearBuy} className="text-3xl flex justify-end w-full"><AiFillCloseCircle /></button>
+      <h2 className="text-center font-first text-4xl">Compra</h2>
+      <div className="p-4">
+      <OwlCarousel
+        items={2}
+      >
+        {img.map((item, key)=><img src={item} key={key} alt="Imagen del producto" />)}
+      </OwlCarousel>
+      </div>
+      <div className="flex justify-between py-1 px-3 max-w-lg mx-auto">
+        <h3 className="font-second text-xl">{name}</h3>
+        <span className="font-bold ml-1 text-base">{price}$</span>
+      </div>
+      <div className="flex flex-col gap-4 p-4 max-w-lg mx-auto">
+        <div className="flex w-full ring-2 ring-first overflow-hidden rounded">
+          <label htmlFor="size" className="bg-first w-40 min-w-max text-white font-second p-1 text-base">Talla</label>
+          <select name="size" className="w-full outline-none font-second text-base" id="size" ref={size}>
+            {sizes.map((item,key) => <option key={key}>{item}</option>)}
           </select>
         </div>
-        {/* Select how many products */}
-        <div className="menu-buy_body__count">
-          <span 
-            className="down"
-            onClick={() => counter.current.value > 1 ? counter.current.value-- : null}
-          >-</span>
-          <input 
-            type="number" 
-            ref={counter} 
-            defaultValue={1}
-            min={1}
-            readOnly
-          />
-          <span 
-          className="up"
-          onClick={() => counter.current.value++}
-          >+</span>
-        </div>
-        {/* Buttons */}
-        <div className="menu-buy__body__buttons">
-          <button 
-            type="submit"
-            onClick={()=>{
-              clearBuy();
-              counter.current.value = 1;
-              size.current.value = 's';
-            }}
-          >Cancelar</button>
-          <button 
-            onClick={()=>{
-              addProduct({
-                ...product,
-                count: counter.current.value,
-                size: size.current.value
-              })
-              dispatch({ type: "ADD_NOTIFICATION", payload: {message: `${product.name} agregado al carrito`} })
-              clearBuy();
-              counter.current.value = 1;
-              size.current.value = 's';
-            }}
-            type="submit">Agregar</button>
+        <div className="flex w-full ring-2 ring-first overflow-hidden rounded">
+          <label htmlFor="count" className="bg-first w-40 min-w-max text-white font-second p-1 text-base">Cantidad</label>
+          <div className="flex w-full justify-around items-center">
+            <MdExpandMore className="text-xl" onClick={sustractCount} />
+            <div type="number" className="w-max outline-none font-second text-base" name="count" id="count">{count}</div>
+            <MdExpandLess className="text-xl" onClick={addCount} />
+          </div>
         </div>
       </div>
-    </div>
+        <div className="max-w-2xl mx-auto mt-4 flex mb-20">
+          <button className="bg-[#dc2626] py-1 px-5 rounded text-white text-base" onClick={clearBuy}>Cancelar</button>
+          <button 
+            className=" flex-grow bg-[#16a34a] py-1 px-5 text-base rounded text-white"
+            onClick={()=>{
+            addProduct({id, name, img, count, size: size.current.value, price});
+            clearBuy();
+            toast.success(`Agregado ${name} al carrito`, {
+              position: "top-right",
+              duration: 3000
+            })
+          }}>Agregar</button>
+        </div>
+      </div>
+    </motion.div>
   )
 }
+
 
 const mapDispatchToProps = (dispatch) => {
   return {

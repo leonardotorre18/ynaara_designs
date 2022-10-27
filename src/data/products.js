@@ -1,5 +1,5 @@
 class Products {
-  constructor(id, name, img, price, sizes, description){
+  constructor(id, name, img, price, sizes, description) {
     this.id = id;
     this.name = name;
     this.img = img;
@@ -7,46 +7,46 @@ class Products {
     this.sizes = sizes;
     this.description = description;
   }
-};
+}
 
 const addRoute = (name) => `assets/img/${name}`;
 
 export const products = [
   new Products(1, 'Sueter Verde', [
     addRoute('img1.jpg'),
-    addRoute('img1.1.jpg')
+    addRoute('img1.1.jpg'),
   ], 6, ['Única'], ''),
   new Products(2, 'Sueter Amarillo', [
     addRoute('img2.jpg'),
-    addRoute('img2.1.jpg')
+    addRoute('img2.1.jpg'),
   ], 6, ['Única'], ''),
   new Products(3, 'Sueter Azul', [
     addRoute('img3.jpg'),
-    addRoute('img3.1.jpg')
+    addRoute('img3.1.jpg'),
   ], 6, ['Única'], ''),
   new Products(4, 'Sueter Morado', [
     addRoute('img4.jpg'),
-    addRoute('img4.1.jpg')
+    addRoute('img4.1.jpg'),
   ], 6, ['Única'], ''),
   new Products(5, 'Sueter Rojo', [
     addRoute('img5.jpg'),
-    addRoute('img5.1.jpg')
+    addRoute('img5.1.jpg'),
   ], 6, ['Única'], ''),
   new Products(6, 'Sueter Rosado Fuerte', [
     addRoute('img6.jpg'),
-    addRoute('img6.1.jpg')
+    addRoute('img6.1.jpg'),
   ], 6, ['Única'], ''),
   new Products(7, 'Sueter Rosa', [
     addRoute('img7.jpg'),
-    addRoute('img7.1.jpg')
+    addRoute('img7.1.jpg'),
   ], 6, ['Única'], ''),
   new Products(8, 'Sueter Amarillo', [
     addRoute('img8.jpg'),
-    addRoute('img8.1.jpg')
+    addRoute('img8.1.jpg'),
   ], 6, ['Única'], ''),
   new Products(9, 'Sueter Azul', [
     addRoute('img9.jpg'),
-    addRoute('img9.1.jpg')
+    addRoute('img9.1.jpg'),
   ], 6, ['Única'], ''),
   new Products(10, 'Sueter Blanco', [addRoute('img10.jpg')], 6, ['Única'], ''),
   new Products(11, 'Sueter Morado', [

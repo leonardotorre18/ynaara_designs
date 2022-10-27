@@ -1,50 +1,48 @@
 import React from 'react';
-import '../../styles/ProductCard.scss';
 import { connect } from 'react-redux/es/exports';
 import { setBuy } from '../../store/actions/currentBuy';
 import OwlCarousel from 'react-owl-carousel3';
+import { motion } from "framer-motion";
 
-function ProductCard({key, id, name, price, img, sizes, setBuy }){
+const ProductCard = ({ id, name, price, img, sizes, setBuy }) => {
   return (
-    <div className="card" key={key}>
-      {
-        img.length > 1 ? (
-          <OwlCarousel
+    <motion.div className="group relative cursor-pointer shadow rounded-md overflow-hidden"
+      onClick={()=>{
+        setBuy({
+          id, 
+          name,
+          price: parseInt(price),
+          img,
+          sizes
+        });
+      }}
+      whileTap={{ scale: 0.9 }}
+    >
+      <div className="overflow-hidden max-h-72">
+        <OwlCarousel
           items={1}
-            className='carousel'
-            autoplay
-            autoplayTimeout={Math.round(Math.random() * (8 - 3) + 3) * 1000}
-            autoplaySpeed={1000}
-            loop
-          >
-            {img.map((i, key) => <div className='card__img' key={key}>
-              <img src={i} alt="Imagen YNaara Designs" />
-              </div>)}
-          </OwlCarousel>
-        ) : <div className="card__img">
-          <img src={img[0]} alt="Imagen YNaara Designs" />
-        </div>
-      }
-      <div className="card__body">
-        <h3 className="card__body__title">{ name }</h3>
-        <p className="card__body__price">{ price }$</p>
+          // className='carousel-theme'
+          autoplay
+          autoplayTimeout={Math.round(Math.random() * (8 - 3) + 3) * 1000}
+          autoplaySpeed={1000}
+          loop
+        >
+          { img.map((url, key) => (
+            <img
+              key={key}
+              src={url}
+              alt="Imagen del Producto"
+              className="w-full object-cover hover:opacity-80 hover:scale-105 transition-all duration-500"
+            />
+          )) }
+        </OwlCarousel>
       </div>
-      <div className="card__buttons">
-        <button
-          onClick={() => {
-            setBuy({
-              id, 
-              name,
-              price: parseInt(price),
-              img,
-              sizes
-            });
-          }}
-          type="submit"
-        >Comprar</button>
+      <div className="flex justify-between py-1 px-3">
+        <h3 className="font-second text-lg">{name}</h3>
+        <span className="font-bold ml-1 font-second text-base">{price}$</span>
       </div>
-    </div>
-  );
+    </motion.div>
+  )
 }
 
 const mapDispatchToProps = (dispatch) => {

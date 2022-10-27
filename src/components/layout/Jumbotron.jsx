@@ -1,14 +1,12 @@
 import React, { memo } from 'react';
-import '../../styles/Jumbotron.scss';
 import logo from '../../assets/logo.svg';
 
 export default memo(function Jumbotron() {
   return (
-    <div className="jumbotron">
-      <div className="jumbotron__img">
-        <img src={logo} alt="Ynaara Desings Logo" />
+    <div className="w-full">
+      <div className=" w-full px-5 pt-5 max-w-4xl mx-auto">
+        <img src={logo} className="w-full object-cover" alt="Ynaara Desings Logo" />
       </div>
-      {/* <h1 className="jumbotron__title">Ynaara Desings</h1> */}
     </div>
   );
 })

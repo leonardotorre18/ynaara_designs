@@ -1,15 +1,11 @@
-import actionTypes from "./actionTypes"
+import actionTypes from './actionTypes';
 
-export const setBuy = (product) => {
-  return {
-    type: actionTypes.SET_BUY,
-    payload: product
-  }
-}
+export const setBuy = (product) => ({
+  type: actionTypes.SET_BUY,
+  payload: product,
+});
 
-export const clearBuy = () => {
-  return {
-    type: actionTypes.CLEAR_BUY,
-    payload: {}
-  }
-}
+export const clearBuy = () => ({
+  type: actionTypes.CLEAR_BUY,
+  payload: {},
+});

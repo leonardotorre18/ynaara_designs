@@ -1,27 +1,23 @@
-import React, { useRef } from 'react';
-import icon from '../../assets/iconmonstr-magnifier-2.svg';
-import '../../styles/SearchBar.scss';
+import { useRef } from 'react';
+import {AiOutlineSearch} from 'react-icons/ai'
+  
+const SearchBar = ({setFilter}) => {
 
-export default function SearchBar({ setFilter }) {
-  const input = useRef(null)
+  const input = useRef(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFilter(input.current.value)
+    input.current.value = '';
+  }
+
   return (
-    <div className='search-bar'>
-      <input
-        type="text"
-        ref={input}
-        onChange={e=>{
-          setFilter(e.target.value.trim());
-        }}
-      />
-      <button 
-        type="submit"
-        onClick={()=>{
-          setFilter(input.current.value.trim());
-          input.current.value = '';
-        }}
-      >
-        <img src={icon} alt="Search Icon" />
+    <form className="shadow flex w-72 mx-auto my-4 rounded overflow-hidden h-10 hover:ring-2 ring-first" onSubmit={handleSubmit}>
+      <input className="w-full outline-none px-2" type="text" onChange={(e)=>setFilter(e.target.value)} ref={input} />
+      <button className="bg-first w-10 p-1">
+      <AiOutlineSearch className="text-white object-cover w-full h-full" />
       </button>
-    </div>
+    </form>
   )
 }
+export default SearchBar;

@@ -1,20 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux/es/exports';
-import imgCart from '../../assets/iconmonstr-shopping-cart-2.svg';
-import { toggleMenuCart } from '../../store/actions/showMenuCart';
-import '../../styles/IconCart.scss';
+import {AiOutlineShoppingCart} from 'react-icons/ai';
 
 function IconCart({ products, toggleShow }) {
-  
   return (
-    <div 
-      className="icon-cart"
-      onClick={toggleShow}
-    >
-      <img src={imgCart} alt="Imagen Como Icono" />
-      <span 
-        className="number"
-      >{ products.length }</span>
+    <div className="relative pt-1">
+      <span className="absolute bg-white text-first rounded-full w-5 h-5 text-xs flex justify-center items-center -top-1 -right-1/3">{ products.length }</span>
+      <AiOutlineShoppingCart />
     </div>
   );
 }
@@ -23,8 +15,4 @@ const mapStateToProps = (state) => {
   return { products: state.shoppingCart }
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return { toggleShow: () => dispatch(toggleMenuCart()) }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(IconCart);
+export default connect(mapStateToProps, null)(IconCart);

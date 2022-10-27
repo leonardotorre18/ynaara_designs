@@ -1,41 +1,30 @@
-import React, { useState } from 'react';
-import '../../styles/Navbar.scss';
+import React from 'react';
 import { connect } from 'react-redux/es/exports';
-import IconCart from '../pure/IconCart';
 import { Link } from 'react-router-dom';
 import { clearBuy } from '../../store/actions/currentBuy';
 import logo from '../../assets/logo-light.svg';
-import BurgerButton from '../pure/BurgerButton';
+import IconCart from '../pure/IconCart';
 
 function Navbar({ clearBuy }) {
 
-  const [clicked, setClicked] = useState(false);
-
-  const changedClicked = () => {
-    setClicked(!clicked)
-  }
-  const falseClicked = () => {
-    setClicked(false)
-  }
-
-
-
   return (
-    <header className="header" onClick={clearBuy}>
-      <nav className="navbar">
-        <BurgerButton onClick={changedClicked} />
-        <div className="logo">
-          <img src={logo} alt="logo" />
+    <header className="bg-first h-16 shadow sticky top-0 left-0 w-full z-50" onClick={clearBuy}>
+      <nav className="flex justify-between items-center px-4 h-full">
+        <div className="h-12 md:h-16 px-3 pb-1">
+          <img 
+            src={logo}
+            alt="YNaara Designs"
+            className="object-cover h-full"
+          />
         </div>
-        <ul className={clicked ? 'list' : 'list hidden'}>
-          <Link onClick={falseClicked} to={'/'}>Inicio</Link>
-          <Link onClick={falseClicked} to={'/store'}>Tienda</Link>
+        <ul className="flex gap-3 justify-end">
+          <Link to={'/'} className="text-3xl text-firstlight font-first hover:text-white transition-colors">Inicio</Link>
+          <Link to={'/store'} className="text-3xl text-firstlight font-first hover:text-white transition-colors">Tienda</Link>
+          <Link to={'/cart'} className="text-3xl text-firstlight font-first hover:text-white transition-colors">
+            <IconCart />
+          </Link>
         </ul>
-        {/* Link */}
-        <Link to={'/cart'} className='icon-cart-link'>
-          <IconCart />
-        </Link>
-      </nav>
+      </nav> 
     </header>
   );
 }

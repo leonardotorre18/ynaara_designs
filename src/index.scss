@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+$height-navbar: 60px;
+
+$little-font-size: .9rem;
+$normal-font-size: 1.3rem;
+$medium-font-size: 1.8rem;
+$large-font-size: 2rem;
+$extralarge-font-size: 2.3rem;
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
