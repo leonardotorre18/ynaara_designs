@@ -1,17 +1,16 @@
-const ParticlesConfig = {
+export default {
   fullScreen: {
     enable: false,
     zIndex: -1,
-    
   },
   particles: {
     bounce: {
       vertical: {
-        value: 0
+        value: 0,
       },
       horizontal: {
-        value: 0
-      }
+        value: 0,
+      },
     },
     color: {
       value: [
@@ -24,10 +23,6 @@ const ParticlesConfig = {
         '#8E44AD',
         '#3498DB',
       ],
-      // animation: {
-      //   enable: true,
-      //   speed: 10
-      // }
     },
     move: {
       decay: 0.1,
@@ -36,21 +31,12 @@ const ParticlesConfig = {
       gravity: {
         acceleration: 9.81,
         enable: true,
-        maxSpeed: 100
+        maxSpeed: 100,
       },
-      // outModes: {
-      //   top: 'none',
-      //   default: 'destroy',
-      //   bottom: 'bounce'
-      // },
-      // speed: {
-      //   min: 50,
-      //   max: 50
-      // }
     },
     number: {
       value: 0,
-      limit: 30
+      limit: 30,
     },
     opacity: {
       value: 1,
@@ -59,20 +45,20 @@ const ParticlesConfig = {
         startValue: 'max',
         destroy: 'min',
         speed: 0.3,
-        sync: true
-      }
+        sync: true,
+      },
     },
     rotate: {
       value: {
         min: 0,
-        max: 360
+        max: 360,
       },
       direction: 'random',
       move: true,
       animation: {
         enable: true,
-        speed: 60
-      }
+        speed: 60,
+      },
     },
     tilt: {
       direction: 'random',
@@ -80,60 +66,45 @@ const ParticlesConfig = {
       move: true,
       value: {
         min: 0,
-        max: 360
+        max: 360,
       },
       animation: {
         enable: true,
-        speed: 60
-      }
+        speed: 60,
+      },
     },
     shape: {
       type: [
-        // 'circle',
         'square',
-        // 'polygon',
-        // 'character',
-        // 'character',
-        // 'character'
       ],
       options: {
         polygon: [
           {
-            sides: 5
+            sides: 5,
           },
           {
-            sides: 6
-          }
+            sides: 6,
+          },
         ],
-        // character: [
-        //   {
-        //     value: [
-        //       '💩',
-        //       '🤡',
-        //       '🍀',
-        //       '🍙'
-        //     ]
-        //   }
-        // ]
-      }
+      },
     },
     size: {
-      value: 7
+      value: 7,
     },
     roll: {
       darken: {
         enable: true,
-        value: 30
+        value: 30,
       },
       enlighten: {
         enable: true,
-        value: 30
+        value: 30,
       },
       enable: true,
       speed: {
         min: 15,
-        max: 25
-      }
+        max: 25,
+      },
     },
     wobble: {
       distance: 30,
@@ -141,24 +112,22 @@ const ParticlesConfig = {
       move: true,
       speed: {
         min: -15,
-        max: 15
-      }
-    }
+        max: 15,
+      },
+    },
   },
   emitters: {
     position: {
       x: 50,
-      y: 100
+      y: 100,
     },
     size: {
       width: 100,
-      height: 100
+      height: 100,
     },
     rate: {
       quantity: 10,
-      delay: 0.3
-    }
-  }
-}
-
-export default ParticlesConfig;
+      delay: 0.3,
+    },
+  },
+};

@@ -23,13 +23,12 @@ const GetFinalPrice = (products = []) => {
 // }
 
 export const getDiscount = (products = []) => {
-
   let totalProduct = 0;
-  products.forEach(product => {
-    totalProduct += product.count
+  products.forEach((product) => {
+    totalProduct += product.count;
   });
 
-  let firstDiscount= 0;
+  let firstDiscount = 0;
   let secondDiscount = 0;
 
   const rest = totalProduct % 6;
@@ -38,7 +37,6 @@ export const getDiscount = (products = []) => {
   secondDiscount += Math.floor(rest / 3) * 3;
 
   return firstDiscount + secondDiscount;
-
-}
+};
 
 export default GetFinalPrice;

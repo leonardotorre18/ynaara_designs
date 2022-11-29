@@ -1,54 +1,59 @@
+/* eslint-disable import/no-unresolved */
 import React from 'react';
-import { connect } from 'react-redux/es/exports';
-import { setBuy } from '../../store/actions/currentBuy';
-import OwlCarousel from 'react-owl-carousel3';
-import { motion } from "framer-motion";
+import { Autoplay } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router';
 
-const ProductCard = ({ id, name, price, img, sizes, setBuy }) => {
+import 'swiper/css';
+import 'swiper/css/autoplay';
+
+export default function ProductCard({
+  id,
+  name,
+  price,
+  img,
+}) {
+  const history = useNavigate();
   return (
-    <motion.div className="group relative cursor-pointer shadow rounded-md overflow-hidden"
-      onClick={()=>{
-        setBuy({
-          id, 
-          name,
-          price: parseInt(price),
-          img,
-          sizes
-        });
-      }}
+    <motion.div
+      className="group relative cursor-pointer shadow rounded-md overflow-hidden"
+      onClick={() => history(`/${id}`)}
       whileTap={{ scale: 0.9 }}
     >
       <div className="overflow-hidden max-h-72">
-        <OwlCarousel
-          items={1}
-          // className='carousel-theme'
-          autoplay
-          autoplayTimeout={Math.round(Math.random() * (8 - 3) + 3) * 1000}
-          autoplaySpeed={1000}
+        <Swiper
+          modules={[Autoplay]}
           loop
+          slidesPerView={1}
+          autoplay={{
+            delay: Math.round(Math.random() * (8 - 3) + 3) * 1000,
+            pauseOnMouseEnter: true,
+            disableOnInteraction: false,
+          }}
+          speed={1000}
         >
-          { img.map((url, key) => (
-            <img
-              key={key}
-              src={url}
-              alt="Imagen del Producto"
-              className="w-full object-cover hover:opacity-80 hover:scale-105 transition-all duration-500"
-            />
+          { img.map((url) => (
+            <SwiperSlide>
+              <img
+                key={url.id}
+                src={url.url}
+                alt="Imagen del Producto"
+                className="w-full object-cover hover:opacity-80 hover:scale-105 transition-all duration-500"
+              />
+            </SwiperSlide>
           )) }
-        </OwlCarousel>
+        </Swiper>
       </div>
       <div className="flex justify-between py-1 px-3">
-        <h3 className="font-second text-lg">{name}</h3>
-        <span className="font-bold ml-1 font-second text-base">{price}$</span>
+        <h3 className="font-second text-lg">
+          {name}
+        </h3>
+        <span className="font-bold ml-1 font-second text-base">
+          {price}
+          $
+        </span>
       </div>
     </motion.div>
-  )
+  );
 }
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setBuy: (product) => dispatch(setBuy(product)),
-  };
-};
-
-export default connect(null,mapDispatchToProps)(ProductCard);

@@ -1,4 +1,4 @@
-import { getDiscount } from "./getPrice";
+import { getDiscount } from './getPrice';
 
 /**
  * Created a URL Message Whatsapp using Whatsapp API
@@ -15,7 +15,7 @@ const newMessageWhatsapp = (products, finalPrice) => {
     // message += `${product.count}+${product.name}+Talla%3A+${product.size}%0D%0A`;
     message += `✅%20${product.count}%20*${product.name}*%20%20_talla%20${product.size}_%20%20$${product.price}%20c/u%0D%0A`;
   });
-  
+
   const discount = getDiscount(products);
   if (discount > 0) message += `%0D%0A%0D%0A🎉🎉Gracias%20a%20nuestra%20promoción%20especial%20ahorras%20*$${discount}*%20en%20tu%20compra🎉🎉%0D%0A%0D%0A`;
 
