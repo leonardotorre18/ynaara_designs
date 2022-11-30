@@ -26,7 +26,7 @@ function MenuCart({
   const history = useNavigate();
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full min-h-[82vh]">
       <h2 className="text-center font-first text-4xl sticky top-16 py-3 w-full bg-white z-10">Carrito de Compras</h2>
       { products.length > 0 ? (
         <div className="mx-auto p-4 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-7xl bg-black bg-opacity-5">
